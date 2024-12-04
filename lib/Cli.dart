@@ -35,19 +35,18 @@ void _clearConsole() {
       _viewInventory();
     }
     else if(input == '2'){
-      print('Add Vegetable');
+      _addVegitable();
     }
     else if(input == '3'){
-      print('Remove Vegetable');
+      _removeVegitable();
     }
     else if(input == '4'){
-      print('Process Order');
+      _proccessOrder();
     }
     else if(input == '5'){
-      print('View Order History');
+      _viewOrders();
     }
     else if(input == '6'){
-      print('Exit');
       exit(0);
     }
     else{
@@ -64,8 +63,30 @@ void _clearConsole() {
  ╚████╔╝ ██║███████╗╚███╔███╔╝     ██║██║ ╚████║ ╚████╔╝ ███████╗██║ ╚████║   ██║   ╚██████╔╝██║  ██║   ██║   
   ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝      ╚═╝╚═╝  ╚═══╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝   ╚═╝   
   """);
+  var input = stdin.readLineSync();
+    if(input == '1'){
+      _viewInventory();
+    }
+    else if(input == '2'){
+      _addVegitable();
+    }
+    else if(input == '3'){
+      _removeVegitable();
+    }
+    else if(input == '4'){
+      _proccessOrder();
+    }
+    else if(input == '5'){
+      _viewOrders();
+    }
+    else if(input == '6'){
+      exit(0);
+    }
+    else{
+      print('Invalid Input');
+    }
   }
-  void addVegitable(){
+  void _addVegitable(){
     _clearConsole();
     print(r"""/n
  █████╗ ██████╗ ██████╗     ██╗   ██╗███████╗ ██████╗ ██╗████████╗ █████╗ ██████╗ ██╗     ███████╗███████╗
