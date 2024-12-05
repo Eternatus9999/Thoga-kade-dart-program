@@ -1,10 +1,13 @@
 import 'dart:io';
 
 class FileService {
-  Future<bool> saveData(String filePath, String data) async {
+  Future<bool> saveData(String filePath, String data, {bool append = true}) async {
     try {
       final file = File(filePath);
-      await file.writeAsString(data);
+      await file.writeAsString(
+        data,
+        mode: append ? FileMode.append : FileMode.write,
+      );
       print('Data saved successfully.');
       return true;
     } catch (e) {
