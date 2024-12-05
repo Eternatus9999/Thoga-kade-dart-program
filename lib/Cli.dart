@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import './managers/ThogaKadeManager.dart';
+import 'managers/InventoryManager.dart';
 
 class Cli {
 
@@ -66,7 +67,7 @@ void clearConsole() {
  ╚████╔╝ ██║███████╗╚███╔███╔╝     ██║██║ ╚████║ ╚████╔╝ ███████╗██║ ╚████║   ██║   ╚██████╔╝██║  ██║   ██║   
   ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝      ╚═╝╚═╝  ╚═══╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝   ╚═╝   
   """);
-  
+    new InventoryManager().viewInventory();
   }
   void _addItem(){
     clearConsole();

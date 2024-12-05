@@ -64,8 +64,5 @@ class ThogaKadeManager {
       }
     }
   }
-
-  viewInventory(){
-    
-  }
+  
 }
