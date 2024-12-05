@@ -7,8 +7,7 @@ class Vegetable {
   final String expiryDate;
 
   Vegetable(this.id, this.name, this.pricePerKg, this.availableQuantity, this.category, this.expiryDate);
-
-  String? toJson() {
-    return '{id: $id, name: $name, pricePerKg: $pricePerKg, availableQuantity: $availableQuantity, category: $category, "expiryDate: $expiryDate}';
+  String toJson() {
+    return 'id: $id, name: $name, pricePerKg: $pricePerKg, availableQuantity: $availableQuantity, category: $category, expiryDate: $expiryDate';
   }
 }
