@@ -2,6 +2,7 @@ import 'dart:io';
 import '../Cli.dart';
 import '../models/Item.dart';
 import '../services/FileService.dart';
+import 'InventoryManager.dart';
 
 class ThogaKadeManager {
   constructor() {}
@@ -43,20 +44,20 @@ class ThogaKadeManager {
                 print("Enter Valid expiryDate");
                 expiryDate = stdin.readLineSync();
               } else {
-                Item item = new Item(id, name, pricePerKg,availableQuantity, category, expiryDate);
-                if(await FileService().saveData("inventory.txt",item.toJson())){
+                Item item = new Item(id, name, pricePerKg, availableQuantity,
+                    category, expiryDate);
+                if (await FileService().saveData("inventory.txt", item.toJson())) {
                   print("Item added successfully!");
-                print("Do you want to add another Item? (yes/no)");
-                String? choice = stdin.readLineSync();
-                if (choice == "yes") {
-                  Cli().clearConsole();
-                  addItem();
-                }else{
-                  Cli().clearConsole();
-                  Cli().run();
+                  print("Do you want to add another Item? (yes/no)");
+                  String? choice = stdin.readLineSync();
+                  if (choice == "yes" || choice == "y") {
+                    Cli().clearConsole();
+                    addItem();
+                  } else {
+                    Cli().clearConsole();
+                    Cli().run();
+                  }
                 }
-                }
-                
               }
             }
           }
@@ -64,5 +65,37 @@ class ThogaKadeManager {
       }
     }
   }
-  
+
+  Future<void> removeItem() async {
+    String itemlist = InventoryManager().getInventory();
+    List<String> list = itemlist.split("|");
+    print(itemlist);
+    print("Enter the id of the item you want to remove");
+    var id = stdin.readLineSync();
+    if (id == null || id == "" || int.parse(id) - 1 > list.length) {
+      print("Enter Valid id");
+      Cli().clearConsole();
+      removeItem();
+    } else {
+      for (int i = 0; i < list.length; i++) {
+        if (i == int.parse(id) - 1) {
+          list.removeAt(i);
+          break;
+        }
+      }
+      if(await InventoryManager().editInventory(list)){
+      print("Item removed successfully!");
+      print("Do you want to remove another Item? (yes/no)");
+      String? choice = stdin.readLineSync();
+      if (choice == "yes" || choice == "y") {
+        Cli().clearConsole();
+        removeItem();
+      } else {
+        Cli().clearConsole();
+        Cli().run();
+      }
+      }
+      
+    }
+  }
 }
