@@ -1,4 +1,4 @@
-class Vegetable {
+class Item {
   final String id;
   final String name;
   final double pricePerKg;
@@ -6,7 +6,7 @@ class Vegetable {
   final String category;
   final String expiryDate;
 
-  Vegetable(this.id, this.name, this.pricePerKg, this.availableQuantity, this.category, this.expiryDate);
+  Item(this.id, this.name, this.pricePerKg, this.availableQuantity, this.category, this.expiryDate);
   String toJson() {
     return '\nid: $id, name: $name, pricePerKg: $pricePerKg, availableQuantity: $availableQuantity, category: $category, expiryDate: $expiryDate';
   }
