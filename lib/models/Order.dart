@@ -6,5 +6,5 @@ class Order{
 
   Order(this.id, this.item, this.qty, this.totalPrice);
 
-  String toString() => 'id: $id, item: $item, qty: $qty, totalPrice: $totalPrice|';
+  String toString() => 'id: $id, item: $item, qty: $qty, totalPrice: $totalPrice |';
 }
