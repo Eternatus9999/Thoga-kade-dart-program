@@ -23,4 +23,15 @@ class InventoryManager {
   String getInventory(){
     return FileService().loadData("inventory.txt").toString();
   }
+
+  double getItemById(String item, double qty) {
+    List<String> list = getInventory().split("|");
+    for (int i = 0; i < list.length; i++) {
+      if(i== int.parse(item)-1){
+        List<String> itemlist = list[i].split(",")[2].split(":");
+        return double.parse(itemlist[1]) * qty;
+      }
+    }
+    return 0.0;
+  }
 }

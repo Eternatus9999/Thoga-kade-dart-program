@@ -33,7 +33,7 @@ class FileService {
     try {
       final file = File(filePath);
       if (file.existsSync()) {
-        return File("Inventory.txt").readAsStringSync().toString();
+        return File(filePath).readAsStringSync().toString();
       } else {
         print('File does not exist.');
         return '';
